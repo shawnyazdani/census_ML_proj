@@ -51,7 +51,7 @@ def inference(model, X):
 
     Inputs
     ------
-    model : ???
+    model : Adaboost Classifier
         Trained machine learning model.
     X : np.array
         Data used for prediction.
@@ -60,4 +60,6 @@ def inference(model, X):
     preds : np.array
         Predictions from the model.
     """
-    pass
+    
+    preds = model.predict(X)
+    return preds
