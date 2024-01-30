@@ -1,0 +1,4 @@
+[core]
+    remote = gdrive_census
+['remote "gdrive_census"']
+    url = gdrive://1ay4R58pwuzHw8Zl_5im7f38pBodAY-yI
