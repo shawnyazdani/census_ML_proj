@@ -22,7 +22,7 @@ jobs:
     - name: Set up virtual environment
       run: |
         python -m venv venv
-        source venv/bin/activate
+        source venv/Scripts/activate
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
       with:
