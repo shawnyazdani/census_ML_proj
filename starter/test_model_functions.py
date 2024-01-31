@@ -1,5 +1,4 @@
-import pytest
-from train_model import data, cat_features, numerical_features, model, encoder, lb
+from .train_model import data, cat_features, numerical_features, model, encoder, lb
 from ml.model import validate_data_slice_performance
 
 precision_threshold = 0.6
