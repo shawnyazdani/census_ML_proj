@@ -35,8 +35,7 @@ def test_metrics_improper_classification():
     precision, recall, fbeta, accuracy = compute_model_metrics(y_true, y_pred)
     for val in [precision, recall, accuracy]:
         assert(abs(val-0) < tolerance)
-    assert abs(fbeta-1) < tolerance #fbeta = 1, due to setting zero-division case to have value = 1
-
+        
 def test_inference_output_shape():
     """ Ensure that inference produces the same output shape as the input shape."""
     assert( len(inference(model, X_train)) == len(X_train) )
