@@ -13,20 +13,20 @@ class InputDataset(BaseModel):
     """
     Input Inference Dataset, consisting of all census dataset features
     """
-    age: int
-    workclass: str
-    fnlgt: int
-    education: str
-    education_num: int = Field(alias='education-num')
-    marital_status: str = Field(alias='marital-status')
-    occupation: str 
-    relationship: str 
-    race: str
-    sex: str
-    capital_gain: int = Field(alias='capital-gain')
-    capital_loss: int = Field(alias='capital-loss')
-    hours_per_week: int = Field(alias='hours-per-week')
-    native_country: str = Field(alias='native-country')
+    age: Union[int, List[int]]
+    workclass: Union[str, List[str]]
+    fnlgt: Union[int, List[int]]
+    education: Union[str, List[str]]
+    education_num: Union[int, List[int]] = Field(alias='education-num')
+    marital_status: Union[str, List[str]] = Field(alias='marital-status')
+    occupation: Union[str, List[str]]
+    relationship: Union[str, List[str]]
+    race: Union[str, List[str]]
+    sex: Union[str, List[str]]
+    capital_gain: Union[int, List[int]] = Field(alias='capital-gain')
+    capital_loss: Union[int, List[int]] = Field(alias='capital-loss')
+    hours_per_week: Union[int, List[int]] = Field(alias='hours-per-week')
+    native_country: Union[str, List[str]] = Field(alias='native-country')
 
 app = FastAPI()
 #perform checks on inputs before hand... ensure all values have the same lengths!
