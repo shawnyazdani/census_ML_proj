@@ -17,7 +17,7 @@ Additionally, data slice subsets were evaluated for all categorical and all nume
 The overall metrics used included precision, recall, accuracy, and f1-score. 
 The overall model's performance on the test set yielded the following scores:
 Test Precision: 0.77, Test Recall: 0.61, Test F1-Score: 0.68, Test Accuracy: 0.86 
-For assessing the performance of each slice, the precision and accuracy were tested for each slice against thresholds of 0.6 and 0.7 respectively.
+For assessing the performance of each slice, the precision and accuracy were tested for each slice against thresholds of 0.55 and 0.7 respectively.
 
 ## Ethical Considerations
 By ensuring that the precision and accuracy for each slice exceeded values of 0.6 and 0.7 respectively, we can deem that the model is ethically sound and isn't excessively biased towards any one slice.

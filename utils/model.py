@@ -5,6 +5,18 @@ from sklearn.metrics import fbeta_score, precision_score, recall_score, accuracy
 from sklearn.ensemble import AdaBoostClassifier
 from utils.data import process_data
 
+def clean_data(data):
+    """
+    Cleans initial dataset.
+    Removes whitespaces in both columns and all entries.
+    Inputs: Initial raw dataset, expected as type dataframe.
+    Returns: Cleaned dataset, of type dataframe.
+    """
+    assert((data.isna().sum()  == 0).all() == True) #ensure no missing values
+    data.rename(str.strip, axis='columns', inplace=True) #remove all white-spaces from column names
+    data = data.map(lambda x: x.strip() if type(x) == str else x) #removing all leading/trailing whitespaces from text/categorical data.
+    return data
+
 def train_model(X_train, y_train):
     """
     Trains a machine learning model and returns it.
@@ -115,31 +127,52 @@ def validate_data_slice_performance(data, model, feature, categorical_features, 
     return precisions, accuracies
 
 def eval_data_slice(data_subset, model, categorical_features, encoder, lb):
+    '''
+    Given a slice of cleaned data, this function uses the trained model to assess the classification metrics for the data slice.
+    
+    Inputs 
+    -----
+    data: cleaned clice/data subset
+    model: trained model
+    categorical_features: list of categorical features in dataset
+    encoder: fitted OneHotEncoder
+    lb: fitted Label-Binarizer
+    
+    Returns
+    ----
+    Metrics (precision, recall, f1-score, and accuracy) for the data slice of interest
+    '''
     #splitting into features & values for data subset
     X_set, y_set, _, _ = process_data(data_subset, categorical_features,
                                             label="salary", training=False, encoder = encoder, lb = lb)       
     #performing inference with model, using X_set
-    y_set_pred = inference(model, X_set)
+    y_set_pred = model.predict(X_set)
     #Validating performance with metrics.
     precision_set, recall_set, fbeta_set, accuracy_set = compute_model_metrics(y_set, y_set_pred)
     
     return precision_set, recall_set, fbeta_set, accuracy_set
 
-def inference(model, X):
+def inference(model, data, encoder, categorical_features):
     """ Run model inferences and return the predictions.
 
     Inputs
     ------
     model : Adaboost Classifier
         Trained machine learning model.
-    X : np.array
-        Data used for prediction.
+    data : Raw input, expected as dataframe
+        Raw Data used for prediction.
+    encoder: 
+        Fitted one-hot-encoder, used for pre-processing raw inference dataset
+    categorical features:
+        Categorical features, used for one-hot-encoding.
+
     Returns
     -------
     preds : np.array
         Predictions from the model.
     """
-    
-    preds = model.predict(X)
+    data_clean = clean_data(data)
+    X_processed, _,_,_ = process_data(X = data_clean, categorical_features=categorical_features, training=False, encoder=encoder)
+    preds = model.predict(X_processed)
     return preds
 
