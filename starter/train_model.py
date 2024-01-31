@@ -43,8 +43,8 @@ with open('model.pkl', 'wb') as file:
     pickle.dump(model, file)
 
 #Making predictions using trained model
-Y_pred_train = inference(X_train)
-Y_pred_test = inference(X_test)
+Y_pred_train = inference(model, X_train)
+Y_pred_test = inference(model, X_test)
 
 #Assessing prediction metrics on both training & test set.
 precision_train, recall_train, fbeta_train, accuracy_train = compute_model_metrics(y_train, Y_pred_train)

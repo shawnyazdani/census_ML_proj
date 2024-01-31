@@ -47,10 +47,24 @@ def compute_model_metrics(y, preds):
 
 def validate_data_slice_performance(data, model, feature, categorical_features, numerical_features, encoder, lb):
     '''
-    Validates the performance of the trained ML model on dataset slices of interest.
+    Validates the performance of the trained ML model on dataset slices of interest. 
+    For categorical features, the slices evaluated are those with more than 1000 occurrences
+    For each numerical feature, two slices are evaluated --  one includes data above the median value and one includes data below the median value.  
     
     Inputs 
     -----
+    data: cleaned dataset from which to extract slices
+    model: trained model
+    feature: feature of interest to slice
+    categorical_features: list of categorical features in dataset
+    numerical_features: list of numerical features in dataset
+    encoder: fitted OneHotEncoder
+    lb: fitted Label-Binarizer
+
+    Returns
+    -----
+    precisions: list of precisions for the evaluated slices
+    accuracies: list of accuracies for the evaluated slices
 
     '''
     precisions = []
