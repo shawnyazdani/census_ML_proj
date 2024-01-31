@@ -1,5 +1,5 @@
-from .train_model import data, cat_features, numerical_features, model, encoder, lb, X_train
-from .model import validate_data_slice_performance, compute_model_metrics, inference
+from utils.train_model import data, cat_features, numerical_features, model, encoder, lb, X_train
+from utils.model import validate_data_slice_performance, compute_model_metrics, inference
 
 precision_threshold = 0.6
 accuracy_threshold = 0.7
@@ -35,7 +35,7 @@ def test_metrics_improper_classification():
     precision, recall, fbeta, accuracy = compute_model_metrics(y_true, y_pred)
     for val in [precision, recall, accuracy]:
         assert(abs(val-0) < tolerance)
-        
+
 def test_inference_output_shape():
     """ Ensure that inference produces the same output shape as the input shape."""
     assert( len(inference(model, X_train)) == len(X_train) )

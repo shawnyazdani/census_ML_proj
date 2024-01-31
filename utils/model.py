@@ -1,6 +1,9 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))) #adding root dir to path env var.
 from sklearn.metrics import fbeta_score, precision_score, recall_score, accuracy_score
 from sklearn.ensemble import AdaBoostClassifier
-from .data import process_data
+from utils.data import process_data
 
 def train_model(X_train, y_train):
     """

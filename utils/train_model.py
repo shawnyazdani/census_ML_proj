@@ -1,9 +1,12 @@
-import pandas as pd 
+import sys
 import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))) #adding root dir to path env var.
+import pandas as pd 
 import pickle
 from sklearn.model_selection import train_test_split
-from .data import process_data
-from .model import train_model, compute_model_metrics, inference
+from utils.data import process_data
+from utils.model import train_model, compute_model_metrics, inference
+
 
 # Script to train machine learning model.
 script_dir = os.path.dirname(os.path.abspath(__file__))
