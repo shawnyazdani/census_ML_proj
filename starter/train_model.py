@@ -17,7 +17,7 @@ data = data.map(lambda x: x.strip() if type(x) == str else x) #removing all lead
 train, test = train_test_split(data, test_size=0.20)
 
 #Pre-processing  for train & test splits.
-
+numerical_features = ["age", "education-num","capital-gain", "capital-loss", "hours-per-week"]
 cat_features = [ #used for one-hot-encoding
     "workclass",
     "education",
