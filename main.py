@@ -11,10 +11,6 @@ from contextlib import asynccontextmanager
 from pydantic import BaseModel, Field
 from utils.model import inference, load_fitted_data, get_feature_names
 
-# cat_features, _ = get_feature_names() #used for one-hot-encoding
-#Load in fitted model and one-hot-encoder.
-# model, encoder, _ = load_fitted_data()
-
 class InputDataset(BaseModel):
     """
     Input Inference Dataset, consisting of all census dataset features
