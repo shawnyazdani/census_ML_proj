@@ -28,6 +28,29 @@ class InputDataset(BaseModel):
     hours_per_week: Union[int, List[int]] = Field(alias='hours-per-week')
     native_country: Union[str, List[str]] = Field(alias='native-country')
 
+    class Config:
+        '''used to set an example for all the feature values in the docs.'''
+        schema_extra = {
+            "examples": [
+                {
+                "age": 42,
+                "workclass": "Private",
+                "fnlgt": 12345,
+                "education": "HS-grad", 
+                "education-num": 12,
+                "marital-status": "Married-civ-spouse",
+                "occupation": "Transport-moving",
+                "relationship": "Husband",
+                "race": "White",
+                "sex": "Male",
+                "capital-gain": 42000,
+                "capital-loss": 42,
+                "hours-per-week": 42,
+                "native-country":"United-States"
+                }
+            ]
+        }
+
 app = FastAPI(title="Census Inference API",
     description="An API that demonstrates inference using an input census dataset.",
     version="1.0.0",)
