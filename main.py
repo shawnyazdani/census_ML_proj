@@ -6,8 +6,11 @@ from typing import Union, List
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
-from utils.train_model import cat_features, encoder, model
-from utils.model import inference
+from utils.model import inference, load_fitted_data, get_feature_names
+
+cat_features, _ = get_feature_names() #used for one-hot-encoding
+#Load in fitted model and one-hot-encoder.
+model, encoder, _ = load_fitted_data()
 
 class InputDataset(BaseModel):
     """

@@ -4,7 +4,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))) 
 from sklearn.metrics import fbeta_score, precision_score, recall_score, accuracy_score
 from sklearn.ensemble import AdaBoostClassifier
 from utils.data import process_data
-import logging
+import pickle
+import pandas as pd
 
 def clean_data(data):
     """
@@ -37,6 +38,79 @@ def train_model(X_train, y_train):
     clf = AdaBoostClassifier(random_state=42)
     model = clf.fit(X_train, y_train)
     return model
+
+def get_feature_names():
+    """
+    Get feature names for the dataset.
+    Returns
+    ---
+    Lists of Categorical and numerical features
+    """
+    cat_features = [ 
+        "workclass",
+        "education",
+        "marital-status",
+        "occupation",
+        "relationship",
+        "race",
+        "sex",
+        "native-country",
+    ]
+    numerical_features = ["age", "education-num","capital-gain", "capital-loss", "hours-per-week"]
+    return cat_features, numerical_features
+
+def read_data():
+    """
+    Read raw census dataset
+    Returns
+    ---
+    Raw census dataset, with type Dataframe
+    """
+    data_path = os.path.join(os.getcwd(),'utils',  'census.csv')
+    data = pd.read_csv(data_path)
+    return data
+
+def save_fitted_data(model, encoder, label_binarizer):
+    """
+    Serialize and save off trained/fitted model and fitted encoders 
+    Inputs
+    ----
+    model: trained model
+    encoder: fitted one-hot-encoder
+    label-binarizer: fitted label binarizer
+    
+    Returns
+    ---
+    None, files are saved.
+    """
+    with open('model.pkl', 'wb') as file:
+        pickle.dump(model, file)
+    with open('encoder.pkl', 'wb') as file:
+        pickle.dump(encoder, file)
+    with open('label_binarizer.pkl', 'wb') as file:
+        pickle.dump(label_binarizer, file)
+    return
+
+def load_fitted_data():
+    """
+    Load in and deserialize trained/fitted model and fitted encoders 
+    Inputs
+    ----
+    None
+    
+    Returns
+    ---
+    model: trained model
+    encoder: fitted one-hot-encoder
+    label-binarizer: fitted label binarizer
+    """
+    with open(os.path.join('fitted_data', 'model.pkl'), 'rb') as file:
+        model = pickle.load(file)
+    with open(os.path.join('fitted_data','encoder.pkl'), 'rb') as file:
+        encoder = pickle.load(file)
+    with open(os.path.join('fitted_data','label_binarizer.pkl'), 'rb') as file:
+        lb = pickle.load(file)
+    return model, encoder, lb
 
 def compute_model_metrics(y, preds):
     """

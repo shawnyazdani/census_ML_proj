@@ -20,7 +20,7 @@ Test Precision: 0.77, Test Recall: 0.61, Test F1-Score: 0.68, Test Accuracy: 0.8
 For assessing the performance of each slice, the accuracy of each categorical slice was tested against a threshold of 0.7. For numerical features, each slice was assessed against both precision and accuracy thresholds of 0.55 and 0.7 respectively.
 
 ## Ethical Considerations
-By ensuring that the precision and accuracy for each slice exceeded values of 0.6 and 0.7 respectively, we can deem that the model is ethically sound and isn't excessively biased towards any one slice.
+By ensuring that the metrics for each slice excceded the desired thresholds mentioned above, we can deem that the model is ethically sound and isn't excessively biased towards any one slice.
 
 ## Caveats and Recommendations
 The model performance may be improved via the use of a deep-learning algorithm and/or hyperparameter tuning, as a relatively simple ensemble learning algorithm is used.

@@ -1,8 +1,11 @@
 import pandas as pd
 import logging
-from utils.train_model import data, data_clean, cat_features, numerical_features, model, encoder, lb
-from utils.model import validate_data_slice_performance, compute_model_metrics, inference
+from utils.model import validate_data_slice_performance, compute_model_metrics, inference, load_fitted_data, get_feature_names, read_data, clean_data
 
+data = read_data()
+data_clean = clean_data(data)
+cat_features, numerical_features = get_feature_names() #used for data slicing
+model, encoder, lb = load_fitted_data() 
 
 def configure_logging(log_outputs = False):
     '''
