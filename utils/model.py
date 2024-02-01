@@ -4,6 +4,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))) 
 from sklearn.metrics import fbeta_score, precision_score, recall_score, accuracy_score
 from sklearn.ensemble import AdaBoostClassifier
 from utils.data import process_data
+import logging
 
 def clean_data(data):
     """
@@ -60,7 +61,7 @@ def compute_model_metrics(y, preds):
     accuracy = accuracy_score(y, preds)
     return precision, recall, fbeta, accuracy
 
-def validate_data_slice_performance(data, model, feature, categorical_features, numerical_features, encoder, lb):
+def validate_data_slice_performance(data, model, feature, categorical_features, numerical_features, encoder, lb, logger):
     '''
     Validates the performance of the trained ML model on dataset slices of interest. 
     For categorical features, the slices evaluated are those with more than 1000 occurrences
@@ -75,6 +76,7 @@ def validate_data_slice_performance(data, model, feature, categorical_features, 
     numerical_features: list of numerical features in dataset
     encoder: fitted OneHotEncoder
     lb: fitted Label-Binarizer
+    logger: instance of logging module, used to output metrics for each of the data slices.
 
     Returns
     -----
@@ -90,15 +92,15 @@ def validate_data_slice_performance(data, model, feature, categorical_features, 
         feature_values = data[feature].value_counts().index.values
         feature_value_frequencies = data[feature].value_counts().values
         for feature_val, frequency in zip(feature_values, feature_value_frequencies):
-            #Perform data split assessment if there are more than 1000 occurences of the feature value
-            if frequency > 1000:
+            #Perform data split assessment if there are more than 1000 occurences of the feature value, or if slicing the education category.
+            if frequency > 1000 or feature == 'education':
                 #Extracting data subset with given feature value for categorical var of interest.
                 data_subset = data[data[feature] == feature_val]
                 assert(len(data_subset) == frequency) #ensuring extracted data subset has the proper frequency
                 #Validating data slice performance
                 precision_set, recall_set, fbeta_set, accuracy_set = eval_data_slice(data_subset, model, categorical_features, encoder, lb)
-                print(f"Feature: {feature}, Value: {feature_val}")
-                print(f"Precision: {precision_set:.2f}, Recall: {recall_set:.2f}, F1-Score: {fbeta_set:.2f}, Accuracy: {accuracy_set:.2f} ")
+                logger.info(f"Feature: {feature}, Value: {feature_val}")
+                logger.info(f"Precision: {precision_set:.2f}, Recall: {recall_set:.2f}, F1-Score: {fbeta_set:.2f}, Accuracy: {accuracy_set:.2f} ")
                 precisions.append(precision_set); accuracies.append(accuracy_set)
 
     #####Numerical Feature Data-Slice Validation
@@ -112,16 +114,16 @@ def validate_data_slice_performance(data, model, feature, categorical_features, 
         data_subset_1 = data[data[feature] <= feat_map[feature]] 
         # Validating data slice performance with metrics.
         precision_set, recall_set, fbeta_set, accuracy_set = eval_data_slice(data_subset_1, model, categorical_features, encoder, lb)
-        print(f"Feature: {feature}, Values <= {feat_map[feature]}")
-        print(f"Precision: {precision_set:.2f}, Recall: {recall_set:.2f}, F1-Score: {fbeta_set:.2f}, Accuracy: {accuracy_set:.2f} ")
+        logger.info(f"Feature: {feature}, Values <= {feat_map[feature]}")
+        logger.info(f"Precision: {precision_set:.2f}, Recall: {recall_set:.2f}, F1-Score: {fbeta_set:.2f}, Accuracy: {accuracy_set:.2f} ")
         precisions.append(precision_set); accuracies.append(accuracy_set)
        
         #Subset of data where the numerical feature is greater than its median
         data_subset_2 = data[data[feature] > feat_map[feature]]
         # Validating data slice performance with metrics.
         precision_set, recall_set, fbeta_set, accuracy_set = eval_data_slice(data_subset_2, model, categorical_features, encoder, lb)
-        print(f"Feature: {feature}, Values > {feat_map[feature]}")
-        print(f"Precision: {precision_set:.2f}, Recall: {recall_set:.2f}, F1-Score: {fbeta_set:.2f}, Accuracy: {accuracy_set:.2f} ")
+        logger.info(f"Feature: {feature}, Values > {feat_map[feature]}")
+        logger.info(f"Precision: {precision_set:.2f}, Recall: {recall_set:.2f}, F1-Score: {fbeta_set:.2f}, Accuracy: {accuracy_set:.2f} ")
         precisions.append(precision_set); accuracies.append(accuracy_set)
     
     return precisions, accuracies

@@ -1,0 +1,114 @@
+Feature: workclass, Value: Private
+Precision: 0.77, Recall: 0.60, F1-Score: 0.67, Accuracy: 0.87 
+Feature: workclass, Value: Self-emp-not-inc
+Precision: 0.72, Recall: 0.55, F1-Score: 0.62, Accuracy: 0.81 
+Feature: workclass, Value: Local-gov
+Precision: 0.73, Recall: 0.64, F1-Score: 0.69, Accuracy: 0.83 
+Feature: workclass, Value: ?
+Precision: 0.76, Recall: 0.38, F1-Score: 0.51, Accuracy: 0.92 
+Feature: workclass, Value: State-gov
+Precision: 0.76, Recall: 0.72, F1-Score: 0.74, Accuracy: 0.86 
+Feature: workclass, Value: Self-emp-inc
+Precision: 0.80, Recall: 0.78, F1-Score: 0.79, Accuracy: 0.77 
+Feature: education, Value: HS-grad
+Precision: 0.72, Recall: 0.34, F1-Score: 0.46, Accuracy: 0.87 
+Feature: education, Value: Some-college
+Precision: 0.71, Recall: 0.49, F1-Score: 0.58, Accuracy: 0.86 
+Feature: education, Value: Bachelors
+Precision: 0.75, Recall: 0.80, F1-Score: 0.77, Accuracy: 0.81 
+Feature: education, Value: Masters
+Precision: 0.81, Recall: 0.84, F1-Score: 0.83, Accuracy: 0.80 
+Feature: education, Value: Assoc-voc
+Precision: 0.73, Recall: 0.46, F1-Score: 0.56, Accuracy: 0.81 
+Feature: education, Value: 11th
+Precision: 1.00, Recall: 0.30, F1-Score: 0.46, Accuracy: 0.96 
+Feature: education, Value: Assoc-acdm
+Precision: 0.73, Recall: 0.52, F1-Score: 0.61, Accuracy: 0.83 
+Feature: education, Value: 10th
+Precision: 1.00, Recall: 0.18, F1-Score: 0.30, Accuracy: 0.95 
+Feature: education, Value: 7th-8th
+Precision: 0.73, Recall: 0.20, F1-Score: 0.31, Accuracy: 0.95 
+Feature: education, Value: Prof-school
+Precision: 0.88, Recall: 0.87, F1-Score: 0.88, Accuracy: 0.82 
+Feature: education, Value: 9th
+Precision: 1.00, Recall: 0.11, F1-Score: 0.20, Accuracy: 0.95 
+Feature: education, Value: 12th
+Precision: 0.61, Recall: 0.33, F1-Score: 0.43, Accuracy: 0.93 
+Feature: education, Value: Doctorate
+Precision: 0.85, Recall: 0.83, F1-Score: 0.84, Accuracy: 0.77 
+Feature: education, Value: 5th-6th
+Precision: 0.71, Recall: 0.31, F1-Score: 0.43, Accuracy: 0.96 
+Feature: education, Value: 1st-4th
+Precision: 1.00, Recall: 0.17, F1-Score: 0.29, Accuracy: 0.97 
+Feature: education, Value: Preschool
+Precision: 0.00, Recall: 1.00, F1-Score: 0.00, Accuracy: 0.98 
+Feature: marital-status, Value: Married-civ-spouse
+Precision: 0.76, Recall: 0.67, F1-Score: 0.71, Accuracy: 0.76 
+Feature: marital-status, Value: Never-married
+Precision: 0.93, Recall: 0.32, F1-Score: 0.47, Accuracy: 0.97 
+Feature: marital-status, Value: Divorced
+Precision: 0.81, Recall: 0.27, F1-Score: 0.41, Accuracy: 0.92 
+Feature: marital-status, Value: Separated
+Precision: 0.91, Recall: 0.30, F1-Score: 0.45, Accuracy: 0.95 
+Feature: occupation, Value: Prof-specialty
+Precision: 0.80, Recall: 0.78, F1-Score: 0.79, Accuracy: 0.81 
+Feature: occupation, Value: Craft-repair
+Precision: 0.72, Recall: 0.37, F1-Score: 0.49, Accuracy: 0.83 
+Feature: occupation, Value: Exec-managerial
+Precision: 0.77, Recall: 0.82, F1-Score: 0.79, Accuracy: 0.79 
+Feature: occupation, Value: Adm-clerical
+Precision: 0.72, Recall: 0.41, F1-Score: 0.52, Accuracy: 0.90 
+Feature: occupation, Value: Sales
+Precision: 0.76, Recall: 0.60, F1-Score: 0.67, Accuracy: 0.84 
+Feature: occupation, Value: Other-service
+Precision: 0.68, Recall: 0.19, F1-Score: 0.30, Accuracy: 0.96 
+Feature: occupation, Value: Machine-op-inspct
+Precision: 0.84, Recall: 0.22, F1-Score: 0.34, Accuracy: 0.90 
+Feature: occupation, Value: ?
+Precision: 0.76, Recall: 0.38, F1-Score: 0.51, Accuracy: 0.92 
+Feature: occupation, Value: Transport-moving
+Precision: 0.58, Recall: 0.37, F1-Score: 0.45, Accuracy: 0.82 
+Feature: occupation, Value: Handlers-cleaners
+Precision: 0.85, Recall: 0.20, F1-Score: 0.32, Accuracy: 0.95 
+Feature: relationship, Value: Husband
+Precision: 0.76, Recall: 0.68, F1-Score: 0.72, Accuracy: 0.76 
+Feature: relationship, Value: Not-in-family
+Precision: 0.89, Recall: 0.30, F1-Score: 0.45, Accuracy: 0.92 
+Feature: relationship, Value: Own-child
+Precision: 0.78, Recall: 0.27, F1-Score: 0.40, Accuracy: 0.99 
+Feature: relationship, Value: Unmarried
+Precision: 0.77, Recall: 0.27, F1-Score: 0.40, Accuracy: 0.95 
+Feature: relationship, Value: Wife
+Precision: 0.78, Recall: 0.58, F1-Score: 0.66, Accuracy: 0.72 
+Feature: race, Value: White
+Precision: 0.76, Recall: 0.62, F1-Score: 0.69, Accuracy: 0.85 
+Feature: race, Value: Black
+Precision: 0.79, Recall: 0.46, F1-Score: 0.58, Accuracy: 0.92 
+Feature: race, Value: Asian-Pac-Islander
+Precision: 0.71, Recall: 0.61, F1-Score: 0.66, Accuracy: 0.83 
+Feature: sex, Value: Male
+Precision: 0.76, Recall: 0.64, F1-Score: 0.69, Accuracy: 0.83 
+Feature: sex, Value: Female
+Precision: 0.79, Recall: 0.48, F1-Score: 0.60, Accuracy: 0.93 
+Feature: native-country, Value: United-States
+Precision: 0.77, Recall: 0.61, F1-Score: 0.68, Accuracy: 0.86 
+Feature: age, Values <= 37.0
+Precision: 0.75, Recall: 0.51, F1-Score: 0.61, Accuracy: 0.91 
+Feature: age, Values > 37.0
+Precision: 0.77, Recall: 0.65, F1-Score: 0.71, Accuracy: 0.81 
+Feature: education-num, Values <= 10.0
+Precision: 0.72, Recall: 0.39, F1-Score: 0.51, Accuracy: 0.89 
+Feature: education-num, Values > 10.0
+Precision: 0.78, Recall: 0.77, F1-Score: 0.78, Accuracy: 0.81 
+Feature: capital-gain, Values <= 0.0
+Precision: 0.70, Recall: 0.53, F1-Score: 0.60, Accuracy: 0.86 
+Feature: capital-gain, Values > 0.0
+Precision: 0.94, Recall: 0.92, F1-Score: 0.93, Accuracy: 0.92 
+Feature: capital-loss, Values <= 0.0
+Precision: 0.75, Recall: 0.58, F1-Score: 0.66, Accuracy: 0.86 
+Feature: capital-loss, Values > 0.0
+Precision: 0.89, Recall: 0.87, F1-Score: 0.88, Accuracy: 0.88 
+Feature: hours-per-week, Values <= 40.0
+Precision: 0.77, Recall: 0.52, F1-Score: 0.62, Accuracy: 0.89 
+Feature: hours-per-week, Values > 40.0
+Precision: 0.76, Recall: 0.71, F1-Score: 0.74, Accuracy: 0.79 
