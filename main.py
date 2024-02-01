@@ -95,3 +95,9 @@ async def say_hello():
   """
   return {"welcome": "Welcome to the API for the Census dataset!"}
 
+
+
+#Running locally:
+#Command: uvicorn main:app --reload
+#Running with Cloud Application Platform:
+# Set start command to:  uvicorn main:app --host 0.0.0.0 --port 10000
